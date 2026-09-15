@@ -5,6 +5,7 @@ while True:
     if color.isnumeric():
         print("sorry that is a number")
         elif " " in color:
+
 print("I said one word")
     
 
