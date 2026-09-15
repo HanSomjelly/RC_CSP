@@ -1,10 +1,11 @@
 # RC, Variables, practice,
-year = "2026"
-eye = "brown"
-name = "brad"
-number = "8"
-numbers = "670"
-age = "22"
+year = input("what is the year")
+print ("year... wrong answer")
+eye = input("what is your eye color")
+name = input("what is your name")
+number = input("tell me a number")
+numbers = input("trt again")
+age = "
 subject = "CSP"
 color = "red"
 school = "ucas"
