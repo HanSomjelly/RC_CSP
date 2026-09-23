@@ -6,7 +6,7 @@ name = first_name +" "+ Last_name
 # escape char lets the program ignore the next charechter in the string
 print(f'{name} told the class "you can\'t drive my car."')
 
-user = input("please telll mr youre name:\n").strip().title()
+user = input("please tell me youre name:\n").strip().title()
 
 print(f"new user recognized\nWelcome {user}")
 
