@@ -1,12 +1,4 @@
 # Rc, Passwords Homework, CSP 6th
-password = input('choose a password.') 
-
-if len(password) < 8:
- length = True
-
-for letter in password:
- if letter.islower():
-  lower = True
-
-if length is True:
-print()
+charone = input ('tell me the first letter of a password')
+chartwo = input ('tell me the second letter of your password')
+print(f"{charone}{chartwo}")
