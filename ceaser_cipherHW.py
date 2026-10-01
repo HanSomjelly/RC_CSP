@@ -28,4 +28,3 @@ if cipher == "E":
 else:
     code = caeser_shift(code, -shift)
     print("Your new massage is", code)
-
