@@ -1,7 +1,14 @@
 # RC, Hangman
 import random
+import os
 
 # CReate a list of possible words on a seperate txt file
+with.open("hangman.txt", "r") as file:
+    txtfile = file.readlines()
+
+
+scrtword = random.coice
+
 
 # create another file  holds win/loss counts
 
