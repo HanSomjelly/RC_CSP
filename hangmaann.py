@@ -6,7 +6,7 @@ import random
 
  
 
-# Read the list of possible words from words.txt
+
 
 with open("words.txt", "r") as file:
 
@@ -16,7 +16,7 @@ with open("words.txt", "r") as file:
 
  
 
-# Read the win/loss totals from stats.txt
+
 
 try:
 
@@ -36,7 +36,7 @@ except FileNotFoundError:
 
  
 
-# Function to display the hangman
+
 
 def show_hangman(wrong_guesses):
 
@@ -62,7 +62,7 @@ def show_hangman(wrong_guesses):
 
         print("|    |")
 
-        print("|    O")
+        print("|  {*.*}")
 
         print("|")
 
@@ -78,9 +78,9 @@ def show_hangman(wrong_guesses):
 
         print("|    |")
 
-        print("|    O")
+        print("|  {*.*}")
 
-        print("|    |")
+        print("|  [   ]  ")
 
         print("|")
 
@@ -94,9 +94,9 @@ def show_hangman(wrong_guesses):
 
         print("|    |")
 
-        print("|    O")
+        print("|  {*.*}")
 
-        print("|   /|")
+        print("| /[   ]  ")
 
         print("|")
 
@@ -154,7 +154,7 @@ def show_hangman(wrong_guesses):
 
  
 
-# Function to display the guessed letters and blanks
+
 
 def display_word(secret_word, guessed_letters):
 
@@ -171,88 +171,24 @@ def display_word(secret_word, guessed_letters):
         else:
 
             display += "_ "
-
- 
-
     return display
-
- 
-
- 
-
-# 6 wrong guesses are allowed
-
 MAX_WRONG_GUESSES = 6
-
- 
-
- 
-
-# Main game loop
-
 while True:
-
- 
-
-    # Pick a random word
-
     secret_word = random.choice(words).lower()
-
- 
-
-    # Reset the game
-
     wrong_guesses = 0
-
     guessed_letters = []
-
- 
-
-    print("\nLoading word list from words.txt...")
-
-    print("Loading stats from stats.txt...")
-
-    print("Wins:", wins, "Losses:", losses)
-
- 
-
-    # Hangman game loop
-
+    print("you won", wins,"times" "  you lost", losses,'times')
     while True:
-
- 
-
         print()
-
         show_hangman(wrong_guesses)
-
- 
-
         print("\nWord:", display_word(secret_word, guessed_letters))
-
- 
-
         if guessed_letters:
-
-            print("Guessed letters:", ", ".join(guessed_letters).upper())
-
+            print('guesses', ", ".join(guessed_letters).upper())
         else:
-
-            print("Guessed letters: (none yet)")
-
- 
-
+            print("guesses")
         print("Wrong guesses remaining:", MAX_WRONG_GUESSES - wrong_guesses)
 
- 
-
-        # Ask the player for a letter
-
-        guess = input("Guess a letter: ").lower().strip()
-
- 
-
-        # Make sure the player entered one letter
+        guess = input("tell me a letter ").lower().strip()
 
         if len(guess) != 1 or not guess.isalpha():
 
@@ -260,41 +196,29 @@ while True:
 
             continue
 
- 
-
-        # Check for repeated guesses
-
         if guess in guessed_letters:
 
             print("You already guessed that letter.")
 
             continue
 
- 
-
-        # Add the guess to the guessed letters
-
         guessed_letters.append(guess)
-
- 
-
-        # Check if the letter is in the word
 
         if guess in secret_word:
 
-            print("Nice!", guess.upper(), "is in the word!")
+            print("Nice!", guess.upper(), "is corect")
 
  
 
         else:
 
-            print("Sorry,", guess.upper(), "is not in the word.")
+            print( guess, "is incorect")
 
             wrong_guesses += 1
 
  
 
-        # Check if the player won
+        
 
         word_complete = True
 
@@ -310,7 +234,7 @@ while True:
 
         if word_complete:
 
-            print("\nCongratulations! You guessed the word:", secret_word.upper())
+            print("\nyou guessed", secret_word)
 
             wins += 1
 
@@ -318,15 +242,15 @@ while True:
 
  
 
-        # Check if the player lost
+        
 
         if wrong_guesses == MAX_WRONG_GUESSES:
 
             show_hangman(wrong_guesses)
 
-            print("\nYou lost!")
+            print("\nhaha loser")
 
-            print("The word was:", secret_word.upper())
+            print("The word was:", secret_word)
 
             losses += 1
 
@@ -336,30 +260,16 @@ while True:
 
  
 
-    # Save the updated statistics
+    
 
     with open("stats.txt", "w") as file:
-
         file.write(str(wins) + "\n")
-
         file.write(str(losses) + "\n")
 
- 
-
-    # Display all-time statistics
-
     print("\nUpdated Stats — Wins:", wins, "Losses:", losses)
-
- 
-
-    # Ask if the player wants another game
-
     play_again = input("\nDo you want to play again? (yes/no): ").lower().strip()
 
- 
 
     if play_again != "yes":
-
-        print("Thanks for playing Hangman!")
-
+        print("well to darn bad")
         break
