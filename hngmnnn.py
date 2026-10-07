@@ -111,7 +111,7 @@ while True:
     print()
     print("Wins:", wins)
     print("Losses:", losses)
-    again = input("do you want to play hangman again plese only say YES or NO ").lower()
+    again = input("do you want to play hangman again? plese only say YES or NO ").lower()
     if again != "yes":
         print("hashtag Sad_soLonely")
         break
